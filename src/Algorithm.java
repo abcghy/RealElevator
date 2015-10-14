@@ -92,9 +92,6 @@ public class Algorithm extends Thread{
                     }
                 }
 
-                System.out.println("电梯上有" + elevatorList.size() + "个人");
-
-
                 //判断此方向上是否还有人在等待
                 int flag = 0;
                 for (int i = 0; i < waitingPeopleList.size(); i++) {
@@ -109,6 +106,43 @@ public class Algorithm extends Thread{
                         }
                     }
                 }
+
+//                if (flag != 1 && elevatorList.size() == 0) {
+//                    // 转向
+//                    if (elevator.getDirection() == 1) {
+//                        elevator.setDirection(0);
+//                    } else {
+//                        elevator.setDirection(1);
+//                    }
+//                    // 如果转向的话，就判断有没有需要上电梯 暂停一段时间（实际中运行相应动作）
+//                    // 然后向下运动（并不需要判断需不需要下人），根据本算法，要下电梯已经下了
+//                    for (int i = waitingPeopleList.size() - 1; i >= 0; i--) {
+//                        People p = (People) waitingPeopleList.get(i);
+//                        if (elevator.getCurrentFloor() == p.getLoadFloor() && elevator.getDirection() == p.getUpOrDown()) {
+//                            waitingPeopleList.remove(i);
+//                            elevator.loadPeople(p);
+//                            System.out.print("上 ");
+//                            try {
+//                                Thread.sleep(500);
+//                            } catch (InterruptedException e) {
+//                                e.printStackTrace();
+//                            }
+//                        }
+//                    }
+//                    if (elevator.getDirection() == 1) {
+//                        elevator.setCurrentFloor(elevator.getCurrentFloor() + 1);
+//                    } else {
+//                        elevator.setCurrentFloor(elevator.getCurrentFloor() - 1);
+//                    }
+//                } else {
+//                    if (elevator.getDirection() == 1) {
+//                        elevator.setCurrentFloor(elevator.getCurrentFloor() + 1);
+//                    } else {
+//                        elevator.setCurrentFloor(elevator.getCurrentFloor() - 1);
+//                    }
+//                }
+
+                System.out.println("电梯上有" + elevatorList.size() + "个人");
 
                 if (flag != 1 && elevatorList.size() == 0) {
                     if (elevator.getDirection() == 1) {
@@ -127,6 +161,13 @@ public class Algorithm extends Thread{
                     }
                 }
 
+//                // 如果还有人就不会改变方向
+//                if (flag == 1 || elevatorList.size() != 0) {
+//
+//                }
+
+
+                // 过某一层楼所必要的时间
                 try {
                     Thread.sleep(500);
                 } catch (InterruptedException e) {
